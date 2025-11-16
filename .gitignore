@@ -1,0 +1,31 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.pyc
+
+# Checkpoints
+# (Contains large, trained model files)
+checkpoints/
+
+# Logs
+# (Contains CSV results from training runs)
+logs/
+
+# Plots
+# (Contains generated .png figures)
+plots/
+
+# Data
+# (Contains the large STL-10 dataset ~2.6GB)
+data/
+
+# Environment variables
+# (Contains secret keys, etc.)
+.env
+
+# VS Code settings
+# (User-specific editor settings)
+.vscode/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
