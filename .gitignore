@@ -29,3 +29,6 @@ data/
 # OS-specific files
 .DS_Store
 Thumbs.db
+
+# Full log files
+full_log.txt
