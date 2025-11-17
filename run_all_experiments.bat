@@ -20,13 +20,13 @@ python -u -m training.train_supervised --model resnet18 --epochs 50 --save_name 
 :: ====================================================================
 
 ECHO "--- RUNNING: Group 2 (T-SimCLR) SSL Pretraining (Exp 3/25) ---"
-:: python -u -m training.train_ssl --method simclr --epochs 50 --batch_size 64 --save_name T-SimCLR_backbone.pth
+python -u -m training.train_ssl --method simclr --epochs 50 --batch_size 64 --save_name T-SimCLR_backbone.pth
 
 ECHO "--- RUNNING: Group 2 (T-BYOL) SSL Pretraining (Exp 4/25) ---"
-:: python -u -m training.train_ssl --method byol --epochs 50 --batch_size 64 --save_name T-BYOL_backbone.pth
+python -u -m training.train_ssl --method byol --epochs 50 --batch_size 64 --save_name T-BYOL_backbone.pth
 
 ECHO "--- RUNNING: Group 2 (T-DINO) SSL Pretraining (Exp 5/25) ---"
-:: python -u -m training.train_ssl --method dino --epochs 50 --batch_size 64 --save_name T-DINO_backbone.pth
+python -u -m training.train_ssl --method dino --epochs 50 --batch_size 64 --save_name T-DINO_backbone.pth
 
 :: ====================================================================
 :: --- GROUP 2 (Continued): FINE-TUNE SSL TEACHERS ---
@@ -117,10 +117,14 @@ python -u -m training.train_kd --teachers resnet18 --teacher_paths checkpoints/T
 :: ====================================================================
 
 ECHO "--- Measuring Model Efficiency (FLOPs/Throughput) ---"
-:: python -u measure_models.py
+python -u measure_models.py
 
 ECHO "--- Generating Results Plots ---"
-:: python -u plot_results.py
+python -u plot_results.py
+
+ECHO "--- Generating CSV Summary ---"
+python -u generate_csv_summary.py
+
 
 ECHO "================================================="
 ECHO "--- ALL 25 EXPERIMENTS COMPLETED SUCCESSFULLY ---"
