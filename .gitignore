@@ -32,3 +32,6 @@ Thumbs.db
 
 # Full log files
 full_log.txt
+
+# Final csv file for results
+final_results_summary.csv
