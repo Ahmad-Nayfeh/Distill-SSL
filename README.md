@@ -42,6 +42,8 @@ SSL-Knowledge-Distillation/
 ├── 📂 data/            # (This is where the STL-10 dataset is downloaded)
 ├── 📂 logs/            # (This is where all experiment .csv logs are saved)
 ├── 📂 models/          # (Contains model definitions: resnet.py, mobilenet.py)
+│   ├── mobilenet.py
+│   ├── resnet.py
 ├── 📂 plots/           # (This is where final .png plots are saved)
 ├── 📂 training/        # (Contains all training scripts)
 │   ├── train_supervised.py  # (For baselines and fine-tuning)
@@ -53,6 +55,7 @@ SSL-Knowledge-Distillation/
 │
 ├── 📄 measure_models.py  # (Script to measure model FLOPs and Params)
 ├── 📄 plot_results.py    # (Script to generate all plots from logs)
+├── 📄 generate_csv_summary.py    # (Script to generate final_results_summary.csv from logs)
 ├── 📄 run_all_experiments.bat # (Main script to run all 25 experiments)
 └── 📄 README.md          # (You are here)
 ```
@@ -87,43 +90,10 @@ SSL-Knowledge-Distillation/
 
 ## 📈 How to Run
 
-This project is designed to be run from a single script that executes all experiments in order.
+This project is designed to be run from a single script that executes all experiments in order, in addition to executing `measure_models.py`, `plot_results.py`, and `generate_csv_summary.py`.
 
-### Step 1: Run All Experiments
-This is the main script that will run all 16+ experiments, from pretraining the SSL models to fine-tuning them and distilling them into the final students.
-
-**Warning: This will take a very long time to run (likely 1-2 days).**
+**Warning: This might take a very long time to run (likely 1-2 days: the main bottleneck is in the experiments of `SSL PRETRAINING`).**
 ```bash
 # On Windows
 run_all_experiments.bat
-
-# (Note: The script is configured to run SSL pretraining for 50 epochs
-# to save time, but all experiments are included.)
 ```
-
-### Step 2: Measure Model Efficiency
-To get the FLOPs and Parameter counts for the report.
-```bash
-python measure_models.py
-```
-
-### Step 3: Generate All Plots
-After the experiments are done, this script will read all `.csv` files in the `logs/` directory and automatically generate a corresponding plot for each one in the `plots/` directory.
-```bash
-python plot_results.py
-```
-
-## 📊 Results & Analysis (In Progress)
-
-This section will be populated with the final results after all experiments are complete.
-
-### 1. Baseline Performance (Overfitting)
-
-
-### 2. SSL Teacher Performance
-* This section will compare the fine-tuned test accuracy of the baseline `T-SUP` (64.88%) against the SSL-pretrained teachers (`T-SimCLR`, `T-BYOL`, `T-DINO`).
-
-
-### 3. Student Distillation Performance
-* This section will compare the test accuracy of all final student models.
-
